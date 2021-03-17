@@ -1,0 +1,29 @@
+name: saucectl playwright tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+env:
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Install saucectl
+      - uses: saucelabs/saucectl-run-action@v1
+        with:
+          skip-run: true
+
+      - name: Saucectl RUN Docker
+        run: saucectl run --test-env docker --ccy 10
+
+      - name: Saucectl RUN Sauce Cloud
+        run: saucectl run --test-env sauce --ccy 10
