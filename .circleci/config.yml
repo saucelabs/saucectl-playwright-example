@@ -1,0 +1,24 @@
+version: 2.1
+orbs:
+  saucectl: saucelabs/saucectl-run@1.0.0
+
+jobs:
+  test-playwright:
+    docker:
+      - image: circleci/node:12.21
+    environment:
+      CI_COMMIT_SHORT_SHA: $CIRCLE_SHA1
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 19.03.13
+      - saucectl/saucectl-run:
+          testing-environment: docker
+      - saucectl/saucectl-run:
+          testing-environment: sauce
+
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - test-playwright

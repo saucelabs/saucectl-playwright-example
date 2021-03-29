@@ -1,0 +1,34 @@
+image: alpine:3.9
+
+variables:
+    DOCKER_VERSION: 20.10.5
+    DOCKER_HOST: tcp://docker:2375
+    SAUCECTL_VERSION: 0.34.1
+    SAUCE_USERNAME: ${SAUCE_USERNAME}
+    SAUCE_ACCESS_KEY: ${SAUCE_ACCESS_KEY}
+
+stages:
+  - test
+
+.saucectl:
+  services:
+    - docker:${DOCKER_VERSION}-dind
+  before_script:
+    - apk add curl
+    - curl -L -o saucectl.tar.gz https://github.com/saucelabs/saucectl/releases/download/v${SAUCECTL_VERSION}/saucectl_${SAUCECTL_VERSION}_linux_64-bit.tar.gz
+    - tar -xvzf saucectl.tar.gz
+    - mv saucectl /usr/bin/saucectl
+
+test docker:
+  extends: .saucectl
+  image: docker:${DOCKER_VERSION}
+  stage: test
+  script:
+    - saucectl run -c .sauce/config.yml --test-env docker --ccy 10
+
+test sauce:
+  extends: .saucectl
+  image: docker:${DOCKER_VERSION}
+  stage: test
+  script:
+    - saucectl run -c .sauce/config.yml --test-env sauce --ccy 10
