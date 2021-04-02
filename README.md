@@ -4,8 +4,31 @@ Example running saucectl with playwright.
 
 ## What You'll Need
 
-Install `saucectl` and set up your Sauce Labs account by following
-the [installation guide](https://docs.saucelabs.com/testrunner-toolkit/installation).
+The steps below illustrate one of the quickest ways to get set up. If you'd like a more in-depth guide, please check out
+our [documentation](https://docs.saucelabs.com/testrunner-toolkit/installation).
+
+### Install `saucectl`
+
+```shell
+npm install -g saucectl
+```
+
+### Set Your Sauce Labs Credentials
+
+#### Via Environment Variables
+
+```shell
+export SAUCE_USERNAME='your_username'
+export SAUCE_ACCESS_KEY='your_access_key'
+```
+
+*or*
+
+#### Via `saucectl configure`
+
+```shell
+saucectl configure
+```
 
 ## Running The Examples
 
