@@ -15,17 +15,6 @@ npm install -g saucectl
 
 ### Set Your Sauce Labs Credentials
 
-#### Via Environment Variables
-
-```shell
-export SAUCE_USERNAME='your_username'
-export SAUCE_ACCESS_KEY='your_access_key'
-```
-
-*or*
-
-#### Via `saucectl configure`
-
 ```shell
 saucectl configure
 ```
