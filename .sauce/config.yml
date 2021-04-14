@@ -1,5 +1,7 @@
 apiVersion: v1alpha
 kind: playwright
+defaults:
+  mode: sauce
 sauce:
   region: us-west-1
   concurrency: 2 # Controls how many suites are executed at the same time.
@@ -11,7 +13,7 @@ sauce:
       - other tag
     build: Release $CI_COMMIT_SHORT_SHA
 docker:
-  # Affects how test files are transferred to the docker container when using the docker mode (--test-env docker).
+  # Affects how test files are transferred to the docker container when using the docker mode (--mode docker).
   fileTransfer: copy # Choose between mount|copy.
 playwright:
   version: 1.7.1 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
@@ -19,11 +21,17 @@ playwright:
 rootDir: ./
 suites:
   - name: "Firefox"
-    platformName: "Windows 10" # Only relevant when running a test against the sauce cloud (--test-env sauce).
+    platformName: "Windows 10" # Only relevant when running a test against the sauce cloud (--mode sauce).
     testMatch: '**/*.js'
     params:
       browserName: "firefox"
-  - name: "Chromium"
+  - name: "Chromium in docker"
+    mode: docker
+    testMatch: '**/*.js'
+    params:
+      browserName: "chromium"
+  - name: "Chromium in sauce"
+    mode: sauce
     platformName: "Windows 10"
     testMatch: '**/*.js'
     params:

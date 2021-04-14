@@ -24,11 +24,11 @@ test docker:
   image: docker:${DOCKER_VERSION}
   stage: test
   script:
-    - saucectl run -c .sauce/config.yml --test-env docker --ccy 10
+    - saucectl run -c .sauce/config.yml --mode docker --ccy 10
 
 test sauce:
   extends: .saucectl
   image: docker:${DOCKER_VERSION}
   stage: test
   script:
-    - saucectl run -c .sauce/config.yml --test-env sauce --ccy 10
+    - saucectl run -c .sauce/config.yml --mode sauce --ccy 10
