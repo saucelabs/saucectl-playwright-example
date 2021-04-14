@@ -29,7 +29,7 @@ suites:
     params:
       browserName: "chromium"
 
-# Controls whats artifacts to fetch when the run on Sauce Cloud has finished.
+# Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 artifacts:
   download:
     when: always
