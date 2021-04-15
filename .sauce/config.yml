@@ -13,7 +13,7 @@ sauce:
       - other tag
     build: Release $CI_COMMIT_SHORT_SHA
 docker:
-  # Affects how test files are transferred to the docker container when using the docker mode (--mode docker).
+  # Affects how test files are transferred to the docker container when using the docker mode (--test-env docker).
   fileTransfer: copy # Choose between mount|copy.
 playwright:
   version: 1.7.1 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
@@ -21,7 +21,7 @@ playwright:
 rootDir: ./
 suites:
   - name: "Firefox"
-    platformName: "Windows 10" # Only relevant when running a test against the sauce cloud (--mode sauce).
+    platformName: "Windows 10" # Only relevant when running a test against the sauce cloud (--test-env sauce).
     testMatch: '**/*.js'
     params:
       browserName: "firefox"

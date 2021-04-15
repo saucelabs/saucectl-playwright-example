@@ -26,7 +26,7 @@ Simply check out this repo and run the appropriate command below :rocket:
 ### In Docker
 
 ```shell
-saucectl run --mode docker
+saucectl run --test-env docker
 ```
 
 ![docker example](assets/docker_example.gif)
@@ -34,7 +34,7 @@ saucectl run --mode docker
 ### In Sauce Cloud
 
 ```shell
-saucectl run --mode sauce
+saucectl run --test-env sauce
 ```
 
 ![sauce cloud example](assets/sauce_cloud_example.gif)
