@@ -12,10 +12,7 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
-      - saucectl/saucectl-run:
-          testing-environment: docker
-      - saucectl/saucectl-run:
-          testing-environment: sauce
+      - saucectl/saucectl-run
 
 workflows:
   version: 2
