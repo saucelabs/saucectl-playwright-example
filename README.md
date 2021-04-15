@@ -21,22 +21,37 @@ saucectl configure
 
 ## Running The Examples
 
-Simply check out this repo and run the appropriate command below :rocket:
+Simply check out this repo and set `config.yml` like following :rocket:
 
 ### In Docker
 
-```shell
-saucectl run --test-env docker
+```yaml
+defaults:
+  mode: docker
+```
+or specify docker mode on suite level
+
+```yaml
+suites:
+  - name: "Chrome"
+    mode: docker
 ```
 
 ![docker example](assets/docker_example.gif)
 
 ### In Sauce Cloud
 
-```shell
-saucectl run --test-env sauce
+```yaml
+defaults:
+  mode: sauce
 ```
+or specify sauce mode on suite level
 
+```yaml
+suites:
+  - name: "Chrome"
+    mode: sauce
+```
 ![sauce cloud example](assets/sauce_cloud_example.gif)
 
 ## The Config
