@@ -17,14 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Saucectl RUN Docker
+      - name: Saucectl RUN Docker and Cloud
         uses: saucelabs/saucectl-run-action@v1
         with:
-          testing-environment: docker
-          concurrency: 10
-
-      - name: Saucectl RUN Sauce Cloud
-        uses: saucelabs/saucectl-run-action@v1
-        with:
-          testing-environment: sauce
           concurrency: 10
