@@ -20,24 +20,15 @@ saucectl configure
 ```
 
 ## Running The Examples
+Simply check out this repo and run the command below :rocket:
 
-Simply check out this repo and run the appropriate command below :rocket:
+3 test suites are being triggered in `docker` and `sauce` mode. `saucectl` will run the suites marked as `docker` mode firstly and then run the suites which are marked as `sauce` mode.
 
-### In Docker
-
-```shell
-saucectl run --test-env docker
+```bash
+saucectl run
 ```
 
-![docker example](assets/docker_example.gif)
-
-### In Sauce Cloud
-
-```shell
-saucectl run --test-env sauce
-```
-
-![sauce cloud example](assets/sauce_cloud_example.gif)
+![running example](assets/playwright-example.gif)
 
 ## The Config
 

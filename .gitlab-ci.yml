@@ -19,16 +19,9 @@ stages:
     - tar -xvzf saucectl.tar.gz
     - mv saucectl /usr/bin/saucectl
 
-test docker:
+test:
   extends: .saucectl
   image: docker:${DOCKER_VERSION}
   stage: test
   script:
-    - saucectl run -c .sauce/config.yml --test-env docker --ccy 10
-
-test sauce:
-  extends: .saucectl
-  image: docker:${DOCKER_VERSION}
-  stage: test
-  script:
-    - saucectl run -c .sauce/config.yml --test-env sauce --ccy 10
+    - saucectl run -c .sauce/config.yml --ccy 10
