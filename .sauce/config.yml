@@ -20,7 +20,7 @@ playwright:
 # Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
 rootDir: ./
 suites:
-  - name: "Firefox using global mode" # If no `mode` setting for a suite, it should use the global setting.
+  - name: "Firefox using global mode" # Since the suite doesn't specify the `mode`, it'll inherit the mode specified via `defaults.mode` (see line number 3 and 4 of this config file).
     platformName: "Windows 10" # Only relevant when running a test against the sauce cloud.
     testMatch: '**/*.js'
     params:
