@@ -36,6 +36,13 @@ suites:
     testMatch: '**/*.js'
     params:
       browserName: "chromium"
+  - name: "Webkit in sauce"
+    mode: sauce
+    platformName: "Windows 10"
+    testMatch: '**/*.js'
+    params:
+      browserName: "webkit"
+
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 artifacts:
