@@ -4,7 +4,7 @@
     "baseUrl": "../node_modules",
     "target": "es2020",
     "lib": ["es2020", "dom"],
-    "types": ["jest"],
+    "types": ["node"],
     "skipLibCheck": true
   },
   "include": [
