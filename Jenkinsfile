@@ -1,0 +1,51 @@
+// Example Jenkins Pipeline for Playwright
+// Jenkins Setup:
+// Before start jenkins, create some volume to store configurations and data for jenkins
+
+// docker volume create jenkins-data
+
+// Start Jenkins command line by line:
+//  - run as "root" user (insecure, contact your admin to configure user and groups!)
+//  - run Docker in disconnected mode
+//  - name running container "blue-ocean"
+//  - map port 8080 with Jenkins UI
+//  - map volumes for Jenkins data, NPM and caches
+//  - pass Docker socket which allows Jenkins to start worker containers
+//  - download and execute the latest BlueOcean Docker image
+
+// docker run \
+//   -u root \
+//   -d \
+//   --name blue-ocean \
+//   -p 8080:8080 \
+//   -v jenkins-data:/var/jenkins_home \
+//   -v /var/run/docker.sock:/var/run/docker.sock \
+//   jenkinsci/blueocean:latest
+
+// If it meets docker permission issue with jenkins user,
+// it can be modified by adding jenkins to docker group.
+
+// ** You can setup a node to run the test. Running test on master will encounter into docker in docker issue. **
+
+pipeline {
+  agent any
+
+  environment {
+    // it can load the record key variable from credentials store
+    // see https://jenkins.io/doc/book/using/using-credentials/
+    // https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#handling-credentials
+    SAUCE_USERNAME = credentials('sauce-username')
+    SAUCE_ACCESS_KEY = credentials('sauce-access-key')
+  }
+
+  stages {
+    stage('run') {
+      steps {
+        // This step trigger the test
+        echo 'Run Sauce Playwright Pipeline Test'
+        sh 'npm install saucectl'
+        sh 'npx saucectl run'
+      }
+    }
+  }
+}
