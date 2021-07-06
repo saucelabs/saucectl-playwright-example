@@ -30,6 +30,16 @@ suites:
     testMatch: '**/*.js'
     params:
       browserName: "chromium"
+  - name: "Firefox in docker"
+    mode: docker
+    testMatch: '**/*.js'
+    params:
+      browserName: "firefox"
+  - name: "Webkit in docker"
+    mode: docker
+    testMatch: '**/*.js'
+    params:
+      browserName: "webkit"
   - name: "Chromium in sauce"
     mode: sauce
     platformName: "Windows 10"
