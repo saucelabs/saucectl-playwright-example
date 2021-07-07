@@ -37,7 +37,7 @@ suites:
       browserName: "firefox"
   - name: "Webkit in docker"
     mode: docker
-    testMatch: '**/*.js'
+    testMatch: '.*.js'
     params:
       browserName: "webkit"
   - name: "Chromium in sauce"
