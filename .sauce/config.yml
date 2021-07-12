@@ -43,13 +43,13 @@ suites:
   - name: "Chromium in sauce"
     mode: sauce
     platformName: "Windows 10"
-    testMatch: '**/*.js'
+    testMatch: '.*.js'
     params:
       browserName: "chromium"
   - name: "Webkit in sauce"
     mode: sauce
     platformName: "Windows 10"
-    testMatch: '**/*.js'
+    testMatch: '.*.js'
     params:
       browserName: "webkit"
 
