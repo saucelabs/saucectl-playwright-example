@@ -1,9 +1,8 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
-// @ts-ignore
 test('should verify title of the page', async ({ page }) => {
-    const url:string = "https://www.saucedemo.com/";
-    const title:string = "Swag Labs";
+    const url = "https://www.saucedemo.com/";
+    const title = "Swag Labs";
     await page.goto(url);
     expect(await page.title()).toBe(title);
 });

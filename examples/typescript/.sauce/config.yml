@@ -22,13 +22,13 @@ rootDir: ./
 suites:
   - name: "Chromium in docker"
     mode: docker
-    testMatch: '.*.js'
+    testMatch: '.*.ts'
     params:
       browserName: "chromium"
   - name: "Chromium in sauce"
     mode: sauce
     platformName: "Windows 10"
-    testMatch: '.*.js'
+    testMatch: '.*.ts'
     params:
       browserName: "chromium"
 
