@@ -25,20 +25,6 @@ saucectl configure
 npm install
 ```
 
-## Ensure you already have typescript installed
-
-```shell
-npm install -g typescript
-```
-
-## Run the TypeScript compiler like so
-
-Simply check out this repo, navigate into `examples/typescript` and run the command below:
-
-```shell
-tsc -p ./tsconfig.json
-```
-
 ## Running The Examples
 
 ```bash
