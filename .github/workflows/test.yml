@@ -20,7 +20,6 @@ jobs:
       - name: Saucectl RUN Docker and Cloud
         uses: saucelabs/saucectl-run-action@v1
         with:
-          testing-environment: ""
           concurrency: 10
 
   typescript:
@@ -29,20 +28,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install saucectl
+      - name: Run typescript example
         uses: saucelabs/saucectl-run-action@v1
         with:
-          testing-environment: docker
           concurrency: 10
-
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - name: Playwright with Typescript
-        run: |
-          cd examples/typescript
-          npm ci
-          tsc -p ./tsconfig.json
-          saucectl run
+          working-directory: ./examples/typescript

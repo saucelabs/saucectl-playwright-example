@@ -16,30 +16,40 @@ docker:
   # Affects how test files are transferred to the docker container when using the docker mode.
   fileTransfer: copy # Choose between mount|copy.
 playwright:
-  version: 1.11.1 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
+  version: 1.12.3 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
 # Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
 rootDir: ./
 suites:
   - name: "Firefox using global mode" # Since the suite doesn't specify the `mode`, it'll inherit the mode specified via `defaults.mode` (see line number 3 and 4 of this config file).
     platformName: "Windows 10" # Only relevant when running a test against the sauce cloud.
-    testMatch: '**/*.js'
+    testMatch: ['.*.js']
     params:
       browserName: "firefox"
   - name: "Chromium in docker"
     mode: docker
-    testMatch: '**/*.js'
+    testMatch: ['.*.js']
     params:
       browserName: "chromium"
+  - name: "Firefox in docker"
+    mode: docker
+    testMatch: ['.*.js']
+    params:
+      browserName: "firefox"
+  - name: "Webkit in docker"
+    mode: docker
+    testMatch: ['.*.js']
+    params:
+      browserName: "webkit"
   - name: "Chromium in sauce"
     mode: sauce
     platformName: "Windows 10"
-    testMatch: '**/*.js'
+    testMatch: ['.*.js']
     params:
       browserName: "chromium"
   - name: "Webkit in sauce"
     mode: sauce
     platformName: "Windows 10"
-    testMatch: '**/*.js'
+    testMatch: ['.*.js']
     params:
       browserName: "webkit"
 
