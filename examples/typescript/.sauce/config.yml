@@ -22,7 +22,7 @@ rootDir: ./
 suites:
   - name: "Chromium in docker"
     mode: docker
-    testMatch: '.*.ts'
+    testMatch: ['.*.ts']
     params:
       browserName: "chromium"
   - name: "Chromium in sauce"
