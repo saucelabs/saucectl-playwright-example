@@ -21,7 +21,7 @@ jobs:
           npm i
           npx playwright install-deps chromium
       - name: Run Tests
-        run: npx playwright test --headed tests/cypress*.test.js
+        run: npx playwright test --headed
   # test:
   #   runs-on: ubuntu-latest
   #   steps:
