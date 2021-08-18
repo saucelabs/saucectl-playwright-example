@@ -1,5 +1,27 @@
 {
-  "devDependencies": {
-    "@playwright/test": "1.12.3"
-  }
+  "name": "saucectl-playwright-example",
+  "version": "1.0.0",
+  "description": "Example running saucectl with playwright.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saucelabs/saucectl-playwright-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saucelabs/saucectl-playwright-example/issues"
+  },
+  "homepage": "https://github.com/saucelabs/saucectl-playwright-example#readme"
 }
