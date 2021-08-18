@@ -22,7 +22,9 @@ jobs:
       - name: Dependencies
         run: | 
           npm ci
-          npx playwright install-deps chromium
+      - name: Playwright Dependencies
+        run: | 
+          npx playwright install-deps
       - name: Run Tests
         run: npx playwright test --headed
   # test:
