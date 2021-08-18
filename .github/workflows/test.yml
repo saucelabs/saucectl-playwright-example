@@ -11,25 +11,36 @@ env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  native:
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Dependencies
+        run: | 
+          npm i
+          npx playwright install-deps chromium
+      - name: Run Tests
+        run: npx playwright test --headed tests/cypress*.test.js
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Saucectl RUN Docker and Cloud
-        uses: saucelabs/saucectl-run-action@v1
-        with:
-          concurrency: 10
+  #     - name: Saucectl RUN Docker and Cloud
+  #       uses: saucelabs/saucectl-run-action@v1
+  #       with:
+  #         concurrency: 10
 
-  typescript:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  # typescript:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
 
-      - name: Run typescript example
-        uses: saucelabs/saucectl-run-action@v1
-        with:
-          concurrency: 10
-          working-directory: ./examples/typescript
+  #     - name: Run typescript example
+  #       uses: saucelabs/saucectl-run-action@v1
+  #       with:
+  #         concurrency: 10
+  #         working-directory: ./examples/typescript
