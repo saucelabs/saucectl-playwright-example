@@ -27,7 +27,7 @@ jobs:
           npx playwright install
           npx playwright install-deps
       - name: Run Tests
-        run: npx playwright test --headed
+        run: npx playwright test --headed --reporter=list
   # test:
   #   runs-on: ubuntu-latest
   #   steps:
