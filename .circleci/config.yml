@@ -5,7 +5,7 @@ orbs:
 jobs:
   test-playwright:
     docker:
-      - image: circleci/node:12.21
+      - image: cimg/node:lts
     environment:
       CI_COMMIT_SHORT_SHA: $CIRCLE_SHA1
     steps:
