@@ -21,15 +21,3 @@ jobs:
         uses: saucelabs/saucectl-run-action@v1
         with:
           concurrency: 10
-
-  typescript:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run typescript example
-        uses: saucelabs/saucectl-run-action@v1
-        with:
-          concurrency: 10
-          working-directory: ./examples/typescript
