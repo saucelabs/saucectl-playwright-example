@@ -15,7 +15,7 @@ docker:
   # Affects how test files are transferred to the docker container when using the docker mode.
   fileTransfer: copy # Choose between mount|copy.
 playwright:
-  version: 1.15.2 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
+  version: 1.18.1 # See https://docs.saucelabs.com/testrunner-toolkit for a list of supported versions.
 # Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
 rootDir: ./
 suites:
@@ -39,15 +39,27 @@ suites:
   #   testMatch: ['.*.js']
   #   params:
   #     browserName: "webkit"
-  - name: "Chromium in sauce"
+  - name: "Chromium in sauce (Windows)"
     mode: sauce
     platformName: "Windows 10"
     testMatch: ['.*.js']
     params:
       browserName: "chromium"
-  - name: "Webkit in sauce"
+  - name: "Webkit in sauce (Windows)"
     mode: sauce
     platformName: "Windows 10"
+    testMatch: ['.*.js']
+    params:
+      browserName: "webkit"
+  - name: "Chromium in sauce (macOS)"
+    mode: sauce
+    platformName: "macOS 11.00"
+    testMatch: ['.*.js']
+    params:
+      browserName: "chromium"
+  - name: "Webkit in sauce (macOS)"
+    mode: sauce
+    platformName: "macOS 11.00"
     testMatch: ['.*.js']
     params:
       browserName: "webkit"
