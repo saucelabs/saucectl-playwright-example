@@ -41,7 +41,7 @@ suites:
   #     browserName: "webkit"
   - name: "Chromium on Mac"
     mode: sauce
-    platformName: "mac 11.00"
+    platformName: "macOS 11.00"
     testMatch: ['.*.js']
     params:
       browserName: "chromium"
