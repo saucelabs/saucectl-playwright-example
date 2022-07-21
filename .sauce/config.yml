@@ -20,7 +20,7 @@ playwright:
 rootDir: ./
 suites:
   - name: "Firefox using global mode" # Since the suite doesn't specify the `mode`, it'll inherit the mode specified via `defaults.mode` (see line number 3 and 4 of this config file).
-    platformName: "Windows 10" # Only relevant when running a test against the sauce cloud.
+    platformName: "Windows 11" # Only relevant when running a test against the sauce cloud.
     testMatch: ['.*.js']
     params:
       browserName: "firefox"
@@ -41,13 +41,13 @@ suites:
   #     browserName: "webkit"
   - name: "Chromium on Mac"
     mode: sauce
-    platformName: "mac 11.00"
+    platformName: "macOS 12"
     testMatch: ['.*.js']
     params:
       browserName: "chromium"
   - name: "Webkit in sauce"
     mode: sauce
-    platformName: "Windows 10"
+    platformName: "Windows 11"
     testMatch: ['.*.js']
     params:
       browserName: "webkit"
