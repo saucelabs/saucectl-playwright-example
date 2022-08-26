@@ -37,6 +37,20 @@ suites:
     testMatch: ['.*.js']
     params:
       browserName: "webkit"
+  # - name: "Grep tags"
+  #   platformName: "Windows 11"
+  #   screenResolution: "1440x900"
+  #   testMatch: ['.*.js']
+  #   params:
+  #     grep: "@saucelabs"
+  #     browserName: "chromium"
+  # - name: "GrepInvert tags"
+  #   platformName: "Windows 11"
+  #   screenResolution: "1440x900"
+  #   testMatch: ['.*.js']
+  #   params:
+  #     grepInvert: "@saucelabs"
+  #     browserName: "chromium"
   # - name: "Chromium Docker"
   #   mode: docker
   #   testMatch: ['.*.js']
