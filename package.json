@@ -7,8 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test.saucectl": "saucectl run",
-    "test.local": "npx playwright test"
+    "test.local": "npx playwright test",
+    "test.sauce.us": "CURRENT_TIME=$(date +%s) saucectl run --region us-west-1",
+    "test.sauce.eu": "CURRENT_TIME=$(date +%s) saucectl run"
   },
   "repository": {
     "type": "git",
