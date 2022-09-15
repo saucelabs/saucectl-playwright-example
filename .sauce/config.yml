@@ -26,48 +26,21 @@ suites:
     testMatch: ['.*.js']
     params:
       browserName: "firefox"
+      project: "firefox"  #an important key to override what's in the config.js
   - name: "Chromium Mac"
     platformName: "macOS 12"
     screenResolution: "1440x900"
     testMatch: ['.*.js']
     params:
       browserName: "chromium"
+      project: "chromium"
   - name: "Webkit Win"
     platformName: "Windows 11"
     screenResolution: "1440x900"
     testMatch: ['.*.js']
     params:
       browserName: "webkit"
-  # - name: "Grep tags"
-  #   platformName: "Windows 11"
-  #   screenResolution: "1440x900"
-  #   testMatch: ['.*.js']
-  #   params:
-  #     grep: "@saucelabs"
-  #     browserName: "chromium"
-  # - name: "GrepInvert tags"
-  #   platformName: "Windows 11"
-  #   screenResolution: "1440x900"
-  #   testMatch: ['.*.js']
-  #   params:
-  #     grepInvert: "@saucelabs"
-  #     browserName: "chromium"
-  # - name: "Chromium Docker"
-  #   mode: docker
-  #   testMatch: ['.*.js']
-  #   params:
-  #     browserName: "chromium"
-  # - name: "Firefox Docker"
-  #   mode: docker
-  #   testMatch: ['.*.js']
-  #   params:
-  #     browserName: "firefox"
-  # - name: "Webkit Docker"
-  #   mode: docker
-  #   testMatch: ['.*.js']
-  #   params:
-  #     browserName: "webkit"
-
+      project: "webkit"
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 # artifacts:
 #   download:
