@@ -6,7 +6,10 @@
   "directories": {
     "test": "tests"
   },
-  "scripts": {},
+  "scripts": {
+    "test.saucectl": "saucectl run",
+    "test.local": "npx playwright test"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saucelabs/saucectl-playwright-example.git"
