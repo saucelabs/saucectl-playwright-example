@@ -1,3 +1,6 @@
 node_modules/
 artifacts/
 sauce-app-payload*
+/test-results/
+/playwright-report/
+/playwright/.cache/
