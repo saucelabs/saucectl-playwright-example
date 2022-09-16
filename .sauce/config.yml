@@ -26,7 +26,7 @@ suites:
     testMatch: ['.*.js']
     params:
       browserName: "firefox"
-      project: "firefox"  #an important key to override what's in the config.js
+      project: "firefox"  # Runs the project that's defined in `playwright.config.js`
   - name: "Chromium Mac"
     platformName: "macOS 12"
     screenResolution: "1440x900"
