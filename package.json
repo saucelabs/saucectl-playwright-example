@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test.local": "npx playwright test",
-    "test.sauce.us": "CURRENT_TIME=$(date +%s) saucectl run --region us-west-1",
-    "test.sauce.eu": "CURRENT_TIME=$(date +%s) saucectl run"
+    "test.sauce.us": "saucectl run --region us-west-1",
+    "test.sauce.eu": "saucectl run"
   },
   "repository": {
     "type": "git",

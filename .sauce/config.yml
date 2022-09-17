@@ -10,7 +10,6 @@ sauce:
       - e2e
       - release team
       - other tag
-    build: "config-$CURRENT_TIME"
 docker:
   # Affects how test files are transferred to the docker container when using the docker mode.
   fileTransfer: copy # Choose between mount|copy.
