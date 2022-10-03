@@ -1,11 +1,7 @@
+// @ts-check
 const { test, expect } = require('@playwright/test');
 
-test('should verify title of the page @saucelabs', async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/');
-    expect(await page.title()).toBe('Swag Labs');
-});
-
-test('homepage has Playwright in title and get started link linking to the intro page @playwrightdev', async ({ page }) => {
+test('homepage has Playwright in title and get started link linking to the intro page', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
@@ -19,7 +15,7 @@ test('homepage has Playwright in title and get started link linking to the intro
 
   // Click the get started link.
   await getStarted.click();
-
+  
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
 });

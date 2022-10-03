@@ -10,7 +10,7 @@ our [documentation](https://docs.saucelabs.com/dev/cli/saucectl/#installing-sauc
 ### Install `saucectl`
 
 ```shell
-npm install -g saucectl
+npm install saucectl -D
 ```
 
 ### Set Your Sauce Labs Credentials
@@ -24,11 +24,23 @@ Simply check out this repo and run the command below :rocket:
 
 3 test suites are being triggered in `docker` and `sauce` mode. `saucectl` will run the suites marked as `docker` mode firstly and then run the suites which are marked as `sauce` mode.
 
+Running saucectl in Sauce cloud
+
 ```bash
 saucectl run
 ```
 
 ![running example](assets/playwright-example.gif)
+
+Running saucectl in US and EU
+
+```bash
+npm run test.sauce.us
+```
+
+```bash
+npm run test.sauce.eu
+```
 
 ## The Config
 
