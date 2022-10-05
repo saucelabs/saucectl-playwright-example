@@ -21,8 +21,6 @@ saucectl configure
 
 ## Install Local NPM Dependencies
 
-Run the following command inside the `examples/cucumber` folder :rocket:
-
 ```bash
 npm install
 ```
@@ -35,7 +33,7 @@ Run the following command inside the `examples/cucumber` folder :rocket:
 saucectl run
 ```
 
-### Running With Tags
+### Running With Scenario Tags
 
 Add scenario tags in the config.
 ```yaml
