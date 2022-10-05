@@ -13,7 +13,7 @@ docker:
   image: playwright-2
   fileTransfer: copy
 playwright:
-  version: 1.25.1
+  version: 1.25.1 # use this version temporarily
 rootDir: ./
 suites:
   - name: My Cucumber Test
