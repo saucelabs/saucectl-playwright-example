@@ -17,7 +17,6 @@ playwright:
 rootDir: ./
 suites:
   - name: My Cucumber Test
-    platformName: "macOS 12"
     browserName: chromium
     options:
       paths:
