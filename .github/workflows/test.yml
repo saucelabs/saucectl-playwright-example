@@ -15,9 +15,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Saucectl RUN Docker and Cloud
         uses: saucelabs/saucectl-run-action@v1
         with:
           concurrency: 10
+
+  playwright-cucumberjs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Download saucectl binary
+        run: npm i saucectl@latest
+
+      # Download bundled runner temporarily
+      - name: Saucectl RUN - Config Driven
+        working-directory: ./examples/cucumber/
+        run: |
+          npm i; npx saucectl run --runner-version "url: https://github.com/saucelabs/sauce-playwright-runner/releases/download/v2.13.0/sauce-playwright-runner.zip"
