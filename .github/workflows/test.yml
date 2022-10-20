@@ -36,4 +36,5 @@ jobs:
       - name: Saucectl RUN - Config Driven
         working-directory: ./examples/cucumber/
         run: |
-          npm i; npx saucectl run --runner-version "url: https://github.com/saucelabs/sauce-playwright-runner/releases/download/v2.13.0/sauce-playwright-runner.zip"
+          npm i
+          npx saucectl run
