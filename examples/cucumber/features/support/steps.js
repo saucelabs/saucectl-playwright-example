@@ -11,10 +11,13 @@ Before(async function () {
     switch (process.env.BROWSER_NAME) {
         case 'firefox':
             this.browser = await firefox.launch(opts)
+            break;
         case 'webkit':
             this.browser = await webkit.launch(opts)
+            break;
         default:
             this.browser = await chromium.launch(opts)
+            break;
     }
     const context = await this.browser.newContext();
     this.page = await context.newPage();
