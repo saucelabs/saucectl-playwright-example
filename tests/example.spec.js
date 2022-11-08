@@ -4,6 +4,8 @@ const { test, expect } = require('@playwright/test');
 test('homepage has Playwright in title and get started link linking to the intro page', async ({ page }) => {
   await page.goto('https://playwright.dev/');
 
+  console.log('process.env.FOO: ', process.env.FOO)
+  console.log('process.env.my_foo', process.env.my_foo)
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Playwright/);
 

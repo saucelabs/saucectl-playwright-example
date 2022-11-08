@@ -11,7 +11,7 @@ env:
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
 jobs:
-  test:
+  test-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,20 +21,7 @@ jobs:
         uses: saucelabs/saucectl-run-action@v1
         with:
           concurrency: 10
-
-  playwright-cucumberjs:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Download saucectl binary
-        run: npm i saucectl@latest
-
-      # Download bundled runner temporarily
-      - name: Saucectl RUN - Config Driven
-        working-directory: ./examples/cucumber/
-        run: |
-          npm i
-          npx saucectl run
+          env: |
+            FOO=BAR
+            my_foo=my_bar
+          show-console-log: true
