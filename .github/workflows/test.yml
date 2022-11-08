@@ -21,6 +21,8 @@ jobs:
         uses: saucelabs/saucectl-run-action@v1
         with:
           concurrency: 10
+          sauce-username: ${{ secrets.SAUCE_USERNAME }}
+          sauce-access-key: ${{ secrets.SAUCE_ACCESS_KEY }}
           env: |
             FOO=BAR
             my_foo=my_bar
