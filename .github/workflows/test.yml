@@ -24,4 +24,4 @@ jobs:
           env: |
             FOO=BAR
             my_foo=my_bar
-          show-console-log: true
+          showConsoleLog: true
