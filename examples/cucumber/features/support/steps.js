@@ -1,4 +1,4 @@
-const { Before, When, Then } = require('@cucumber/cucumber')
+const { Before, When, Then } = require('@cucumber/cucumber');
 const { chromium, firefox, webkit} = require('playwright');
 
 Before(async function () {
@@ -8,15 +8,17 @@ Before(async function () {
             dir: "assets"
         }
     };
+
+    // $BROWSER_NAME here is passed through saucectl config file
     switch (process.env.BROWSER_NAME) {
         case 'firefox':
-            this.browser = await firefox.launch(opts)
+            this.browser = await firefox.launch(opts);
             break;
         case 'webkit':
-            this.browser = await webkit.launch(opts)
+            this.browser = await webkit.launch(opts);
             break;
         default:
-            this.browser = await chromium.launch(opts)
+            this.browser = await chromium.launch(opts);
             break;
     }
     const context = await this.browser.newContext();
@@ -31,4 +33,3 @@ When('I open {string} with chrome', async function (string) {
 Then('Close chrome', async function () {
     await this.browser.close();
 });
-

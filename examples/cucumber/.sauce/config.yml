@@ -32,3 +32,4 @@ npm:
     - "@saucelabs/cucumber-reporter" # saucelabs report plugin. It's for generating test cases on web page
     - "typescript" # typescript support
     - "ts-node" # typescript support
+    # You can append your npm dependencies
