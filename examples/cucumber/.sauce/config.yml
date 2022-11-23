@@ -14,9 +14,9 @@ playwright:
 rootDir: ./
 suites:
   - name: My Cucumber Test
-    # saucectl passes browserName as an environment variable $BROWSER_NAME.
-    # Launching the browser for Cucumber.js Playwright tests should be done on customer's side.
-    # Hence saucectl cannot guarantee the displayed browser name is matched with the actual browser name.
+    # The browserName affects the browser metadata of the job as it shows up on the Sauce Labs UI. This value is made available as an environment variable `BROWSER_NAME` on the VM.
+    # It's the user's responsibility to launch the correct browser using Playwright,
+    # so that the Sauce Labs job metadata matches the actual browser used underneath.
     browserName: chromium
     options:
       paths:
