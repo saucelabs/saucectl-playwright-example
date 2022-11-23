@@ -14,6 +14,9 @@ playwright:
 rootDir: ./
 suites:
   - name: My Cucumber Test
+    # saucectl passes browserName as an environment variable $BROWSER_NAME.
+    # Launching the browser for Cucumber.js Playwright tests should be done on customer's side.
+    # Hence saucectl cannot guarantee the displayed browser name is matched with the actual browser name.
     browserName: chromium
     options:
       paths:
@@ -24,7 +27,8 @@ suites:
         - "json:my-cucumber.json"
 npm:
   dependencies:
-    - "@cucumber/cucumber"
-    - "@saucelabs/cucumber-reporter"
-    - "typescript"
-    - "ts-node"
+    # Following packages are required for running a playwright + cucumber test
+    - "@cucumber/cucumber" # cucumber offcial suggested package
+    - "@saucelabs/cucumber-reporter" # saucelabs report plugin. It's for generating test cases on web page
+    - "typescript" # typescript support
+    - "ts-node" # typescript support
