@@ -28,7 +28,7 @@ suites:
 npm:
   dependencies:
     # Following packages are required for running a playwright + cucumber test
-    - "@cucumber/cucumber" # cucumber offcial suggested package
+    - "@cucumber/cucumber" # cucumber official suggested package
     - "@saucelabs/cucumber-reporter" # saucelabs report plugin. It's for generating test cases on web page
     - "typescript" # typescript support
     - "ts-node" # typescript support
