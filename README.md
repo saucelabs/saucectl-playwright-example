@@ -49,4 +49,4 @@ npm run test.sauce.eu
 Our IDE Integrations (e.g. [Visual Studio Code](https://docs.saucelabs.com/dev/cli/saucectl/usage/ide/vscode)) can help you out by validating the YAML files and provide handy suggestions, so make sure to check them out!
 
 ## Running Cucumber.js with Playwright
-`saucectl` provides a way to run Cucumber.js tests with Playwright. In this case, Cucumber.js acts as the test framework, utilizing Playwright as the automation framework. [Follow me](./examples/cucumber/README.md) to check more details.
+`saucectl` provides a way to run Cucumber.js tests with Playwright. In this case, Cucumber.js acts as the test framework, utilizing Playwright as the automation framework. [Follow me](./examples/cucumber/README.md) for more details.
