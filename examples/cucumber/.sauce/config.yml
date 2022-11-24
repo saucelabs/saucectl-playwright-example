@@ -14,6 +14,9 @@ playwright:
 rootDir: ./
 suites:
   - name: My Cucumber Test
+    # The browserName affects the browser metadata of the job as it shows up on the Sauce Labs UI. This value is made available as an environment variable `BROWSER_NAME` on the VM.
+    # It's the user's responsibility to launch the correct browser using Playwright,
+    # so that the Sauce Labs job metadata matches the actual browser used underneath.
     browserName: chromium
     options:
       paths:
@@ -24,7 +27,9 @@ suites:
         - "json:my-cucumber.json"
 npm:
   dependencies:
-    - "@cucumber/cucumber"
-    - "@saucelabs/cucumber-reporter"
-    - "typescript"
-    - "ts-node"
+    # Following packages are required for running a playwright + cucumber test
+    - "@cucumber/cucumber" # cucumber official suggested package
+    - "@saucelabs/cucumber-reporter" # Sauce Labs report plugin. Generates a test cases report for display on the Sauce Labs UI.
+    - "typescript" # typescript support
+    - "ts-node" # typescript support
+    # You can append your npm dependencies
