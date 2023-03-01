@@ -40,7 +40,7 @@ jobs:
         working-directory: examples/cucumber
         run: npm ci
 
-      - name: Download saucectl binary
+      - name: Saucectl RUN - Config Driven
         uses: saucelabs/saucectl-run-action@v3
         with:
           working-directory: ./examples/cucumber/
