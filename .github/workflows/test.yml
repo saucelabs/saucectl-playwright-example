@@ -9,6 +9,7 @@ on:
 env:
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  GITHUB_TOKEN: ${{ github.token }}
 
 jobs:
   test:
@@ -18,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Saucectl RUN Docker and Cloud
-        uses: saucelabs/saucectl-run-action@v1
+        uses: saucelabs/saucectl-run-action@v3
         with:
           concurrency: 10
 
@@ -29,12 +30,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Download saucectl binary
-        run: npm i saucectl@latest
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: examples/cucumber/package-lock.json
 
-      # Download bundled runner temporarily
+      - name: Install dependencies
+        working-directory: examples/cucumber
+        run: npm ci
+
       - name: Saucectl RUN - Config Driven
-        working-directory: ./examples/cucumber/
-        run: |
-          npm i
-          npx saucectl run
+        uses: saucelabs/saucectl-run-action@v3
+        with:
+          working-directory: ./examples/cucumber/
