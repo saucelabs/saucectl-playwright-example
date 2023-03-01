@@ -30,14 +30,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+          cache-dependency-path: examples/cucumber/package-lock.json
+
+      - name: Install dependencies
+        working-directory: examples/cucumber
+        run: npm ci
+
       - name: Download saucectl binary
         uses: saucelabs/saucectl-run-action@v3
         with:
-          skip-run: false
-
-      # Download bundled runner temporarily
-      - name: Saucectl RUN - Config Driven
-        working-directory: ./examples/cucumber/
-        run: |
-          npm i
-          npx saucectl run
+          working-directory: ./examples/cucumber/
