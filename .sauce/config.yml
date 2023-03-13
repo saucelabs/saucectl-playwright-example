@@ -14,7 +14,7 @@ docker:
   # Affects how test files are transferred to the docker container when using the docker mode.
   fileTransfer: copy # Choose between mount|copy.
 playwright:
-  version: "package.json" # See https://docs.saucelabs.com/dev/cli/saucectl/#supported-frameworks-and-browsers for a list of supported versions.
+  version: package.json # See https://docs.saucelabs.com/dev/cli/saucectl/#supported-frameworks-and-browsers for a list of supported versions.
   configFile: playwright.config.js # See https://docs.saucelabs.com/dev/testrunner-toolkit/configuration/playwright#configuration-examples for a list of supported configuration files.
 # Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
 rootDir: ./
