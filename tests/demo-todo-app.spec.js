@@ -284,7 +284,7 @@ test.describe('Clear completed button', () => {
 });
 
 test.describe('Persistence', () => {
-  // NOTE: Skipping that test as this is buggy in playwright 1.31. Should be fixed in Playwright 1.32.
+  // FIXME: Skipping that test as this is buggy in playwright 1.31. Should be fixed in Playwright 1.32.
   test.skip('should persist its data', async ({ page }) => {
     for (const item of TODO_ITEMS.slice(0, 2)) {
       await page.locator('.new-todo').fill(item);
