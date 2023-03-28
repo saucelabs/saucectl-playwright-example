@@ -7,7 +7,7 @@ Example running saucectl with playwright & cucumber.
 The steps below illustrate one of the quickest ways to get set up. If you'd like a more in-depth guide, please check out
 our [documentation](https://docs.saucelabs.com/dev/cli/saucectl/#installing-saucectl).
 
-_If you're using VS Code, you can try out [Runme](https://marketplace.visualstudio.com/items?itemName=stateful.runme) plugin to run following commands inside of VS Code._
+_If you're using VS Code, you can use [Runme](https://marketplace.visualstudio.com/items?itemName=stateful.runme) to run the following commands directly from VS Code._
 
 ### Install `saucectl`
 
