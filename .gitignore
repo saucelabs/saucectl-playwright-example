@@ -4,3 +4,4 @@ sauce-app-payload*
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/__assets__
