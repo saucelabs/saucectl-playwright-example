@@ -1,7 +1,5 @@
 apiVersion: v1alpha
 kind: playwright
-defaults:
-  mode: sauce
 sauce:
   region: us-west-1
   concurrency: 10 # Controls how many suites are executed at the same time.
@@ -10,9 +8,6 @@ sauce:
       - e2e
       - release team
       - other tag
-docker:
-  # Affects how test files are transferred to the docker container when using the docker mode.
-  fileTransfer: copy # Choose between mount|copy.
 playwright:
   version: package.json # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/#supported-testing-platforms for a list of supported versions.
   configFile: playwright.config.js # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/yaml/#configfile for a list of supported configuration files.
@@ -40,7 +35,7 @@ suites:
     params:
       browserName: "webkit"
       project: "webkit"
-# Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
+# Controls what artifacts to fetch when the suites have finished.
 # artifacts:
 #   download:
 #     when: always
