@@ -24,7 +24,7 @@ saucectl configure
 ## Running The Examples
 Simply check out this repo and run the command below :rocket:
 
-Running saucectl in Sauce cloud
+Running saucectl
 
 ```bash
 saucectl run
