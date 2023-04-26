@@ -16,11 +16,8 @@ test('homepage has Playwright in title and get started link linking to the intro
   // Click the get started link.
   await getStarted.click();
   
-  const path = testInfo.outputPath('__assets__/screen_capture.png');
-
-  await page.screenshot({ path });
-
-  testInfo.attachments.push({ name: 'screen_capture.png', path, contentType: 'image/png' });
+  await page.screenshot({ path: 'screen_capture.png' });
+  await testInfo.attach( 'screen_capture.png', { path: 'screen_capture.png', contentType: 'image/png' });
 
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
