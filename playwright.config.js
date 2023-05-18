@@ -7,6 +7,13 @@ const { devices } = require('@playwright/test');
  */
 // require('dotenv').config();
 
+// Local reporter configuration.
+let reporter = [['html', { open: 'never' }]];
+
+// Tweak reporter when running in Sauce Labs.
+if (process.env.SAUCE_VM) {
+  reporter = [['html', { open: 'never', outputFolder: '__assets__/html-report/', attachmentsBaseURL: './'}]];
+}
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -32,7 +39,7 @@ const config = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never'}]],
+  reporter,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -42,6 +49,7 @@ const config = {
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'on',
   },
 
   /* Configure projects for major browsers */
