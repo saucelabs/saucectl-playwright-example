@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: CmdLine@2
+  displayName: 'Install sauceCtl'
+  inputs:
+    script: |
+      sudo sh -c 'curl -L https://saucelabs.github.io/saucectl/install | bash -s -- -b /usr/local/bin'
+      saucectl --version
+- task: CmdLine@2
+  displayName: 'Saucectl RUN - Config Driven'
+  inputs:
+    script: |
+      saucectl run
+  env:
+    # Don't forget to define those secret variables into the pipeline configuration.
+    # https://learn.microsoft.com/en-us/azure/devops/pipelines/process/set-secret-variables?view=azure-devops&tabs=yaml%2Cbash#secret-variable-in-the-ui
+    SAUCE_USERNAME: $(sauceUsername)
+    SAUCE_ACCESS_KEY: $(sauceAccessKey)
