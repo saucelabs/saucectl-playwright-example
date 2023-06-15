@@ -1,6 +1,5 @@
 tasks:
   - command: |
-      cd v1
       npm i -g saucectl
       if [[ -z "$BUILD" ]] && [[ -z "$REGION" ]]; then
         saucectl run
