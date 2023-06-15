@@ -9,7 +9,7 @@ Before(async function () {
         },
     };
 
-    // This make browser use sauce-connect's tunnel if there is one.
+    // This make the browser to use sauce-connect's tunnel if there is one.
     if (process.env.HTTP_PROXY) {
         opts.proxy = {
             server: process.env.HTTP_PROXY,
