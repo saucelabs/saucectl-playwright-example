@@ -6,8 +6,15 @@ Before(async function () {
         headless: false,
         recordVideo: {
             dir: "assets"
-        }
+        },
     };
+
+    // This make the browser to use sauce-connect's tunnel if there is one.
+    if (process.env.HTTP_PROXY) {
+        opts.proxy = {
+            server: process.env.HTTP_PROXY,
+        }
+    }
 
     // $BROWSER_NAME here is passed through saucectl config file
     switch (process.env.BROWSER_NAME) {
