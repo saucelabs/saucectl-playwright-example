@@ -1,0 +1,30 @@
+apiVersion: v1alpha
+kind: playwright
+sauce:
+  region: us-west-1
+  concurrency: 10 # Controls how many suites are executed at the same time.
+  metadata:
+    tags:
+      - e2e
+      - release team
+      - other tag
+playwright:
+  version: 1.37.1 # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/#supported-testing-platforms for a list of supported versions.
+  configFile: playwright.config.js # See https://docs.saucelabs.com/web-apps/automated-testing/playwright/yaml/#configfile for a list of supported configuration files.
+# Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
+rootDir: ./
+suites:
+  - name: "Chromium Mac"
+    platformName: "macOS 12"
+    screenResolution: "1440x900"
+    testMatch: ['.*.js']
+    preExec:
+      - pwd
+      - node ../node_modules/npm/bin/npx-cli.js pnpm install
+    params:
+      browserName: "chromium"
+      project: "chromium"
+npm:
+  packages:
+    pnpm: "*"
+
