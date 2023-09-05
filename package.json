@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test.local": "npx playwright test",
-    "test.sauce.us": "saucectl run --region us-west-1",
-    "test.sauce.eu": "saucectl run"
+    "test.sauce.us": "saucectl run",
+    "test.sauce.eu": "saucectl run --region eu-central-1"
   },
   "repository": {
     "type": "git",
