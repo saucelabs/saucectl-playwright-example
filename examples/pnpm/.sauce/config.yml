@@ -14,17 +14,16 @@ playwright:
 # Controls what files are available in the context of a test run (unless explicitly excluded by .sauceignore).
 rootDir: ./
 suites:
-  - name: "Chromium Mac"
-    platformName: "macOS 12"
-    screenResolution: "1440x900"
+  - name: "Chromium"
+    platformName: "Windows 11"
+    #platformName: "macOS 12"
     testMatch: ['.*.js']
     preExec:
-      - pwd
-      - node ../node_modules/npm/bin/npx-cli.js pnpm install
+      - npx pnpm install
     params:
       browserName: "chromium"
       project: "chromium"
 npm:
   packages:
-    pnpm: "*"
+    lodash: "*"
 
