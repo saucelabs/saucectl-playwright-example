@@ -23,7 +23,4 @@ suites:
     params:
       browserName: "chromium"
       project: "chromium"
-npm:
-  packages:
-    lodash: "*"
 
