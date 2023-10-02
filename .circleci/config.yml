@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  saucectl: saucelabs/saucectl-run@1.0.0
+  saucectl: saucelabs/saucectl-run@3.0.0
 
 jobs:
   test-playwright:
