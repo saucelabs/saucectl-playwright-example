@@ -5,3 +5,5 @@ sauce-app-payload*
 /playwright-report/
 /playwright/.cache/
 /__assets__
+.DS_Store
+
