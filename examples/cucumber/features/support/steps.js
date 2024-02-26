@@ -20,16 +20,20 @@ Before(async function () {
     switch (process.env.BROWSER_NAME) {
         case 'firefox':
             this.browser = await firefox.launch(opts);
+            this.context = await this.browser.newContext();
             break;
         case 'webkit':
-            this.browser = await webkit.launch(opts);
+            this.context = await webkit.launchPersistentContext('', {
+              ...opts,
+              ignoreHTTPSErrors: true,
+            });
             break;
         default:
             this.browser = await chromium.launch(opts);
+            this.context = await this.browser.newContext();
             break;
     }
-    const context = await this.browser.newContext();
-    this.page = await context.newPage();
+    this.page = await this.context.newPage();
 });
 
 When('I open {string} with chrome', async function (string) {
@@ -38,5 +42,8 @@ When('I open {string} with chrome', async function (string) {
 });
 
 Then('Close chrome', async function () {
-    await this.browser.close();
+    await this.context.close();
+    if (this.browser) {
+      await this.browser.close();
+    }
 });

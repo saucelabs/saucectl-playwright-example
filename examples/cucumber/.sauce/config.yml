@@ -17,7 +17,8 @@ suites:
     # The browserName affects the browser metadata of the job as it shows up on the Sauce Labs UI. This value is made available as an environment variable `BROWSER_NAME` on the VM.
     # It's the user's responsibility to launch the correct browser using Playwright,
     # so that the Sauce Labs job metadata matches the actual browser used underneath.
-    browserName: chromium
+    browserName: webkit
+    platformName: Windows 11
     options:
       paths:
         - "features/**/*.feature"
