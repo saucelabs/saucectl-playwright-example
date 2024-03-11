@@ -1,0 +1,1 @@
+export const myA = 'a123xxx'

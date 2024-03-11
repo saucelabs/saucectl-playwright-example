@@ -1,0 +1,5 @@
+{
+  "name": "testing-pnpm",
+  "version": "1.0.2",
+  "main": "src/index.js"
+}
