@@ -33,11 +33,11 @@ Before(async function () {
             this.context = await this.browser.newContext();
             break;
     }
-    this.page = await this.context.newPage();
 });
 
 When('I open {string} with chrome', async function (string) {
-    await this.page.goto(string);
+    const page = this.context.pages()[0];
+    await page.goto(string);
     await new Promise(resolve => setTimeout(resolve, 2000));
 });
 
