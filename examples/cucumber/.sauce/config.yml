@@ -33,3 +33,7 @@ npm:
     - "typescript" # typescript support
     - "ts-node" # typescript support
     # You can append your npm dependencies
+
+reporters:
+  spotlight: # Prints an overview of failed or otherwise interesting jobs.
+    enabled: true
