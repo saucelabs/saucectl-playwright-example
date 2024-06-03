@@ -18,30 +18,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Saucectl RUN
-        uses: saucelabs/saucectl-run-action@v3
+      - name: Run saucectl
+        uses: saucelabs/saucectl-run-action@v4
         with:
           concurrency: 10
 
   playwright-cucumberjs:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+          node-version-file: ".nvmrc"
+          cache: "npm"
           cache-dependency-path: examples/cucumber/package-lock.json
 
-      - name: Install dependencies
+      - name: Install Dependencies
         working-directory: examples/cucumber
         run: npm ci
 
-      - name: Saucectl RUN - Config Driven
-        uses: saucelabs/saucectl-run-action@v3
+      - name: Run saucectl
+        uses: saucelabs/saucectl-run-action@v4
         with:
           working-directory: ./examples/cucumber/
