@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/saucelabs/saucectl-playwright-example#readme",
   "devDependencies": {
-    "@playwright/test": "1.44.0",
+    "@playwright/test": "1.45.0",
     "saucectl": "^0.170.0"
   }
 }
