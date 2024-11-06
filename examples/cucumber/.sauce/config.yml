@@ -27,13 +27,6 @@ suites:
         - "json:my-cucumber.json"
 npm:
   usePackageLock: true
-  packages:
-    # Following packages are required for running a playwright + cucumber test
-    "@cucumber/cucumber": "^9.4.0" # cucumber official suggested package
-    "@saucelabs/cucumber-reporter": "^0.4.1" # Sauce Labs report plugin. Generates a test cases report for display on the Sauce Labs UI.
-    "typescript": "^4.8.4" # typescript support
-    "ts-node": "^10.9.1" # typescript support
-    # You can append your npm dependencies
 
 reporters:
   spotlight: # Prints an overview of failed or otherwise interesting jobs.
