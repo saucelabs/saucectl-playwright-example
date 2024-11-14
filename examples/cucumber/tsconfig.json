@@ -1,0 +1,9 @@
+{
+  "extends": "./root.tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "strictNullChecks": false,
+    "module": "commonjs"
+  },
+  "exclude": []
+}

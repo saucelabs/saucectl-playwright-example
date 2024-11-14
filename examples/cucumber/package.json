@@ -1,9 +1,12 @@
 {
   "dependencies": {
-    "@cucumber/cucumber": "^9.6.0",
+    "@cucumber/cucumber": "^10.9.0",
+    "@playwright/test": "1.47.2",
     "@saucelabs/cucumber-reporter": "^1.2.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3",
-    "@playwright/test": "1.48.2"
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0"
   }
 }

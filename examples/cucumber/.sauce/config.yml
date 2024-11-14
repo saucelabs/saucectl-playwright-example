@@ -3,14 +3,10 @@ kind: playwright-cucumberjs
 sauce:
   region: us-west-1
   concurrency: 10
-  metadata:
-    tags:
-      - e2e
-    build: "$BUILD_ID"
 defaults:
   timeout: 5m
 playwright:
-  version: 1.48.2
+  version: 1.47.2
 rootDir: ./
 suites:
   - name: My Cucumber Test
@@ -22,12 +18,12 @@ suites:
       paths:
         - "features/**/*.feature"
       require:
-        - "features/support/*.js"
+        - "features/support/*.ts"
       format:
         - "json:my-cucumber.json"
 npm:
-  usePackageLock: true
-
-reporters:
-  spotlight: # Prints an overview of failed or otherwise interesting jobs.
-    enabled: true
+  dependencies:
+    - "@cucumber/cucumber"
+    - "@saucelabs/cucumber-reporter"
+    - "ts-node"
+    - "typescript"
