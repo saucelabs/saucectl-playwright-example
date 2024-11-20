@@ -25,8 +25,14 @@ suites:
         - "features/support/*.js"
       format:
         - "json:my-cucumber.json"
+# npm:
+#   usePackageLock: true
 npm:
-  usePackageLock: true
+  dependencies:
+    - "@cucumber/cucumber"
+    - "@saucelabs/cucumber-reporter"
+    - "ts-node"
+    - "typescript"
 
 reporters:
   spotlight: # Prints an overview of failed or otherwise interesting jobs.

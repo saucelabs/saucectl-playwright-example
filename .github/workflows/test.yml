@@ -24,7 +24,7 @@ jobs:
           concurrency: 10
 
   playwright-cucumberjs:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,7 +34,6 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
-          cache-dependency-path: examples/cucumber/package-lock.json
 
       - name: Install Dependencies
         working-directory: examples/cucumber
