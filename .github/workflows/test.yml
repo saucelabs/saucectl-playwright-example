@@ -34,7 +34,6 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "npm"
-          cache-dependency-path: examples/cucumber/package-lock.json
 
       - name: Install Dependencies
         working-directory: examples/cucumber
