@@ -1,9 +1,0 @@
-{
-  "extends": "@tsconfig/node22/tsconfig.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true
-  }
-}
