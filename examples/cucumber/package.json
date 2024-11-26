@@ -1,9 +1,11 @@
 {
   "dependencies": {
     "@cucumber/cucumber": "^9.6.0",
+    "@playwright/test": "1.48.2",
     "@saucelabs/cucumber-reporter": "^1.2.0",
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.9.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3",
-    "@playwright/test": "1.48.2"
+    "typescript": "^5.7.2"
   }
 }
