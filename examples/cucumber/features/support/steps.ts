@@ -21,14 +21,14 @@ Before(async function (this: Options) {
     },
   };
 
-  // Configure proxy if HTTP_PROXY is set
+  // Configure proxy if HTTP_PROXY is set.
   if (process.env.HTTP_PROXY) {
     opts.proxy = {
       server: process.env.HTTP_PROXY,
     };
   }
 
-  // Launch the appropriate browser based on $BROWSER_NAME
+  // Launch the appropriate browser based on $BROWSER_NAME.
   switch (process.env.BROWSER_NAME) {
     case "firefox":
       this.browser = await firefox.launch(opts);
