@@ -22,7 +22,7 @@ suites:
       paths:
         - "features/**/*.feature"
       require:
-        - "features/support/*.js"
+        - "features/support/*.ts"
       format:
         - "json:my-cucumber.json"
 npm:
@@ -31,3 +31,4 @@ npm:
 reporters:
   spotlight: # Prints an overview of failed or otherwise interesting jobs.
     enabled: true
+
