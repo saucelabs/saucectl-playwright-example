@@ -1,29 +1,29 @@
 {
-  "name": "saucectl-playwright-example",
-  "version": "1.0.0",
-  "description": "Example running saucectl with playwright.",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test.local": "npx playwright test",
-    "test.sauce.us": "saucectl run",
-    "test.sauce.eu": "saucectl run --region eu-central-1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/saucelabs/saucectl-playwright-example.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/saucelabs/saucectl-playwright-example/issues"
-  },
-  "homepage": "https://github.com/saucelabs/saucectl-playwright-example#readme",
-  "devDependencies": {
-    "@playwright/test": "1.50.1",
-    "saucectl": "^0.186.4"
-  }
+    "name": "saucectl-playwright-example",
+    "version": "1.0.0",
+    "description": "Example running saucectl with playwright.",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "test.local": "npx playwright test",
+        "test.sauce.us": "saucectl run",
+        "test.sauce.eu": "saucectl run --region eu-central-1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/saucelabs/saucectl-playwright-example.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/saucelabs/saucectl-playwright-example/issues"
+    },
+    "homepage": "https://github.com/saucelabs/saucectl-playwright-example#readme",
+    "devDependencies": {
+        "@playwright/test": "1.52.0",
+        "saucectl": "^0.186.4"
+    }
 }
