@@ -23,7 +23,7 @@ suites:
       browserName: "firefox"
       project: "firefox" # Runs the project that's defined in `playwright.config.js`
   - name: "Chromium Mac"
-    platformName: "macOS 12"
+    platformName: "macOS 13"
     screenResolution: "1440x900"
     testMatch: [".*.js"]
     params:
