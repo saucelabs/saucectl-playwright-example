@@ -36,6 +36,14 @@ suites:
     params:
       browserName: "webkit"
       project: "webkit"
+  - name: "Webkit Mac ARM"
+    platformName: "macOS 26"
+    screenResolution: "1440x900"
+    testMatch: [".*.js"]
+    armRequired: true
+    params:
+      browserName: "webkit"
+      project: "webkit"
 # Controls what artifacts to fetch when the suites have finished.
 # artifacts:
 #   download:
