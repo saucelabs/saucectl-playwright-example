@@ -27,7 +27,7 @@ Simply check out this repo and run the command below :rocket:
 Running saucectl
 
 ```bash
-saucectl run
+saucectl run --region eu-central-1
 ```
 
 ![running example](assets/playwright-example.gif)
