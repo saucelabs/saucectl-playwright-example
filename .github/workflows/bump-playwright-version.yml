@@ -1,0 +1,152 @@
+name: Bump Playwright version
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  RUNNER_PKG_URL: https://raw.githubusercontent.com/saucelabs/sauce-playwright-runner/main/package.json
+  SAUCECTL_RELEASE_API: https://api.github.com/repos/saucelabs/saucectl/releases/latest
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"   # switch to node-version-file: '.nvmrc' if you prefer
+
+      - name: Resolve target versions
+        id: versions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # Playwright version from the runner's package.json
+          PW="$(curl -fsSL "$RUNNER_PKG_URL" | jq -r '.dependencies.playwright')"
+          PW="${PW#^}"; PW="${PW#~}"
+          if [ -z "$PW" ] || [ "$PW" = "null" ]; then
+            echo "::error::Could not read dependencies.playwright from the runner package.json"; exit 1
+          fi
+
+          # Latest saucectl version from its GitHub release
+          SC="$(curl -fsSL -H "Authorization: Bearer $GH_TOKEN" "$SAUCECTL_RELEASE_API" | jq -r '.tag_name')"
+          SC="${SC#v}"
+          if [ -z "$SC" ] || [ "$SC" = "null" ]; then
+            echo "::error::Could not read the latest saucectl release tag"; exit 1
+          fi
+
+          echo "Playwright target: $PW"
+          echo "saucectl target:   $SC"
+          echo "playwright=$PW" >> "$GITHUB_OUTPUT"
+          echo "saucectl=$SC"   >> "$GITHUB_OUTPUT"
+
+      - name: Update example config files
+        run: |
+          set -euo pipefail
+          TARGET="${{ steps.versions.outputs.playwright }}"
+          mapfile -t FILES < <(find . -path '*/.sauce/config.yml' -not -path './.git/*' | sort)
+          echo "Found ${#FILES[@]} config file(s)."
+          for f in "${FILES[@]}"; do
+            CURRENT="$(grep -E '^\s*version:\s*[0-9]' "$f" | head -n1 | sed -E 's/^\s*version:\s*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' || true)"
+            if [ -z "$CURRENT" ] || [ "$CURRENT" = "$TARGET" ]; then
+              echo "  - $f: no change"; continue
+            fi
+            sed -i -E "s/^(\s*version:\s*)[0-9]+\.[0-9]+\.[0-9]+(.*)\$/\1${TARGET}\2/" "$f"
+            echo "  - $f: $CURRENT -> $TARGET"
+          done
+
+      - name: Update package.json and lockfile
+        run: |
+          set -euo pipefail
+          PW="${{ steps.versions.outputs.playwright }}"
+          SC="${{ steps.versions.outputs.saucectl }}"
+
+          if [ ! -f package.json ]; then
+            echo "No package.json at repo root; skipping dependency + lockfile update."
+            exit 0
+          fi
+
+          # Detect which section each dependency lives in (dependencies vs devDependencies).
+          section_for() {
+            local name="$1"
+            if jq -e --arg n "$name" '.dependencies[$n]' package.json >/dev/null 2>&1; then
+              echo dependencies
+            elif jq -e --arg n "$name" '.devDependencies[$n]' package.json >/dev/null 2>&1; then
+              echo devDependencies
+            else
+              echo ""
+            fi
+          }
+
+          PW_SECTION="$(section_for '@playwright/test')"
+          SC_SECTION="$(section_for 'saucectl')"
+
+          # @playwright/test -> exact version; saucectl -> caret range on latest release.
+          if [ -n "$PW_SECTION" ]; then
+            npm pkg set "${PW_SECTION}.@playwright/test=${PW}"
+            echo "package.json: @playwright/test -> ${PW} (${PW_SECTION})"
+          else
+            echo "package.json: @playwright/test not found, skipping"
+          fi
+          if [ -n "$SC_SECTION" ]; then
+            npm pkg set "${SC_SECTION}.saucectl=^${SC}"
+            echo "package.json: saucectl -> ^${SC} (${SC_SECTION})"
+          else
+            echo "package.json: saucectl not found, skipping"
+          fi
+
+          # Regenerate the lockfile. resolved + integrity are fetched from the
+          # npm registry; playwright-core and other transitive pins update to match.
+          npm install --package-lock-only --no-audit --no-fund
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing to change; already up to date."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create draft PR
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          PW="${{ steps.versions.outputs.playwright }}"
+          SC="${{ steps.versions.outputs.saucectl }}"
+          MONTH="$(date +%B)"
+
+          BRANCH="playwright-${PW}"
+          TITLE="Bump examples to playwright ${PW} (${MONTH} default)"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "$TITLE"
+          git push -u origin "$BRANCH" --force-with-lease
+
+          gh pr create \
+            --draft \
+            --base main \
+            --head "$BRANCH" \
+            --title "$TITLE" \
+            --body "$(printf '%s\n' \
+              "Bumps the example project to Playwright \`${PW}\`, matching [\`saucelabs/sauce-playwright-runner\`](https://github.com/saucelabs/sauce-playwright-runner/blob/main/package.json)." \
+              "" \
+              "- \`.sauce/config.yml\`: \`playwright.version\` -> \`${PW}\`" \
+              "- \`package.json\`: \`@playwright/test\` -> \`${PW}\`, \`saucectl\` -> \`^${SC}\` (latest release)" \
+              "- \`package-lock.json\`: regenerated (resolved/integrity from the npm registry)")"
